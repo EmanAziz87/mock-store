@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a04d197-1f3a-4dff-b457-78a571c02526" name="Changes" comment="" />
+    <list default="true" id="3a04d197-1f3a-4dff-b457-78a571c02526" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/ajaxRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/ajaxRequests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/ajaxRequests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ajaxRequests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store/service/ProductServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,8 +27,9 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="package.json" />
-        <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -45,6 +57,7 @@
     &quot;Application.CoffeeshopMenuApplication.executor&quot;: &quot;Run&quot;,
     &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
     &quot;Node.js.index.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.sandbox.js.executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -53,11 +66,12 @@
     &quot;Spring Boot.CoffeeshopMenuApplication (1).executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.CoffeeshopMenuApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.StoreApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.13.1&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.10.7&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/azize/Downloads/menu/menu&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -129,7 +143,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1737083572548</updated>
-      <workItem from="1737430490864" duration="16760000" />
+      <workItem from="1737430490864" duration="33059000" />
     </task>
     <servers />
   </component>

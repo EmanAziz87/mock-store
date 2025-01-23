@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Size;
 public class Product {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull(message = "Product name cannot be null!")
@@ -39,7 +39,7 @@ public class Product {
     public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public void setName(String name) {
@@ -48,6 +48,7 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
     @Override
     public String toString() {
         return "Product{" +

@@ -22,9 +22,16 @@ public class ProductController {
     }
 
     @PostMapping("/saveProduct")
-    public String saveProduct(@Valid @ModelAttribute Product product) {
+    public String saveProduct(@Valid @RequestBody Product product) {
+        System.out.println("CHECKING PRODUCT: " + product.getName() + " $" + product.getPrice());
         productService.saveProduct(product);
         return "Added product successfully!";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteProduct(@PathVariable long id) {
+        productService.deleteProduct(id);
+        return "Deleted product successfully!";
     }
 
 }
