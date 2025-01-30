@@ -1,3 +1,4 @@
+import jqXHR = JQuery.jqXHR;
 
 console.log("jQuery is working!");
 
@@ -7,6 +8,9 @@ function ajaxRequest(url: string, method: string, data?: any): JQuery.jqXHR {
     return $.ajax({
         url: url,
         method: method,
+        xhrFields: {
+            withCredentials: true
+        },
         contentType: 'application/json',
         data: data ? JSON.stringify(data) : undefined
     });
@@ -65,6 +69,38 @@ function deleteProduct(productId: String): void {
         })
 }
 
+function register(registerData: any): void {
+    console.log("REGISTER DATA: ", registerData);
+    ajaxRequest('http://localhost:8080/api/users/register', 'POST', registerData)
+        .done(function(): void {
+            alert('Register successful');
+            window.location.href = 'index.html';
+        }).fail(function(): void {
+            alert('Register failed');
+    })
+}
+
+function login(loginData: any): void {
+    console.log("LOGIN DATA: ", loginData);
+    ajaxRequest('http://localhost:8080/api/users/login', 'POST', loginData)
+        .done(function(): void {
+            alert('Login successful');
+            window.location.href = 'index.html';
+        }).fail(function(): void {
+            alert('Login failed');
+    })
+}
+
+function logout(): void {
+    ajaxRequest('http://localhost:8080/api/users/logout', 'POST')
+        .done(function(): void {
+            alert('Logout successful');
+            window.location.href = 'index.html';
+        }).fail(function(): void {
+            alert('Logout failed');
+    })
+}
+
 $('#productForm').on('submit', (event: JQuery.Event): void => {
     event.preventDefault();
     const rawName: string | undefined = $('#name').val() as string | undefined;
@@ -92,6 +128,75 @@ $('#productForm').on('submit', (event: JQuery.Event): void => {
     addProduct(newProduct);
 
 })
+
+
+
+$('#registerForm').on('submit', (event: JQuery.Event): void => {
+    event.preventDefault();
+    const rawUsername: string | undefined = $('#username').val() as string | undefined;
+    const rawPassword: string | undefined  = $('#password').val() as string | undefined;
+
+    if (rawUsername === undefined || rawPassword === undefined) {
+        alert('Please fill in all fields');
+        throw new Error('name and/or password is missing');
+    }
+
+    type NewRegister = {
+        username: string,
+        password: string
+        role: string
+    }
+
+    const newRegister: NewRegister = {
+        username: rawUsername,
+        password: rawPassword,
+        role: 'USER'
+    }
+    register(newRegister);
+
+});
+
+$('#loginForm').on('submit', (event: JQuery.Event): void => {
+    console.log("LOGIN FORM SUBMITTED");
+    event.preventDefault();
+    const rawUsername: string | undefined = $('#username').val() as string | undefined;
+    const rawPassword: string | undefined  = $('#password').val() as string | undefined;
+
+    if (rawUsername === undefined || rawPassword === undefined) {
+        alert('Please fill in all fields');
+        throw new Error('name and/or password is missing');
+    }
+
+    type NewLogin = {
+        username: string,
+        password: string
+    }
+
+    const newLogin: NewLogin = {
+        username: rawUsername,
+        password: rawPassword
+    }
+
+    login(newLogin);
+})
+
+$('#logoutForm').on('submit', (event: JQuery.Event): void => {
+    event.preventDefault();
+    logout();
+})
+
+ajaxRequest('http://localhost:8080/api/products/test', 'GET')
+    .done(function(response: any, textStatus: string): void {
+        console.log(textStatus);
+        $('#logoutForm').css({display: 'block'});
+
+    }).fail(function(jqXHR: jqXHR, textStatus: string, errorThrown: string): void {
+        $('#logoutForm').css({display: 'none'});
+        console.log(textStatus);
+        console.log(errorThrown);
+})
+
+console.log(ajaxRequest('http://localhost:8080/api/products/test', 'GET'));
 
 
 

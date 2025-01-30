@@ -6,6 +6,9 @@ function ajaxRequest(url, method, data) {
     return $.ajax({
         url: url,
         method: method,
+        xhrFields: {
+            withCredentials: true
+        },
         contentType: 'application/json',
         data: data ? JSON.stringify(data) : undefined
     });
@@ -59,6 +62,35 @@ function deleteProduct(productId) {
         alert('Product deletion failed');
     });
 }
+function register(registerData) {
+    console.log("REGISTER DATA: ", registerData);
+    ajaxRequest('http://localhost:8080/api/users/register', 'POST', registerData)
+        .done(function () {
+        alert('Register successful');
+        window.location.href = 'index.html';
+    }).fail(function () {
+        alert('Register failed');
+    });
+}
+function login(loginData) {
+    console.log("LOGIN DATA: ", loginData);
+    ajaxRequest('http://localhost:8080/api/users/login', 'POST', loginData)
+        .done(function () {
+        alert('Login successful');
+        window.location.href = 'index.html';
+    }).fail(function () {
+        alert('Login failed');
+    });
+}
+function logout() {
+    ajaxRequest('http://localhost:8080/api/users/logout', 'POST')
+        .done(function () {
+        alert('Logout successful');
+        window.location.href = 'index.html';
+    }).fail(function () {
+        alert('Logout failed');
+    });
+}
 $('#productForm').on('submit', (event) => {
     event.preventDefault();
     const rawName = $('#name').val();
@@ -76,4 +108,48 @@ $('#productForm').on('submit', (event) => {
     console.log("NEW PRODUCT: ", newProduct);
     addProduct(newProduct);
 });
+$('#registerForm').on('submit', (event) => {
+    event.preventDefault();
+    const rawUsername = $('#username').val();
+    const rawPassword = $('#password').val();
+    if (rawUsername === undefined || rawPassword === undefined) {
+        alert('Please fill in all fields');
+        throw new Error('name and/or password is missing');
+    }
+    const newRegister = {
+        username: rawUsername,
+        password: rawPassword,
+        role: 'USER'
+    };
+    register(newRegister);
+});
+$('#loginForm').on('submit', (event) => {
+    console.log("LOGIN FORM SUBMITTED");
+    event.preventDefault();
+    const rawUsername = $('#username').val();
+    const rawPassword = $('#password').val();
+    if (rawUsername === undefined || rawPassword === undefined) {
+        alert('Please fill in all fields');
+        throw new Error('name and/or password is missing');
+    }
+    const newLogin = {
+        username: rawUsername,
+        password: rawPassword
+    };
+    login(newLogin);
+});
+$('#logoutForm').on('submit', (event) => {
+    event.preventDefault();
+    logout();
+});
+ajaxRequest('http://localhost:8080/api/products/test', 'GET')
+    .done(function (response, textStatus) {
+    console.log(textStatus);
+    $('#logoutForm').css({ display: 'block' });
+}).fail(function (jqXHR, textStatus, errorThrown) {
+    $('#logoutForm').css({ display: 'none' });
+    console.log(textStatus);
+    console.log(errorThrown);
+});
+console.log(ajaxRequest('http://localhost:8080/api/products/test', 'GET'));
 fetchProducts();
